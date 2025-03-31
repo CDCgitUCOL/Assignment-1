@@ -5,8 +5,94 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment_1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow"
+        Height="450"
+        Width="800">
     <Grid>
+       <Grid Margin="10"> <!-- grid used for formatting gui-->
+	
+
+
+		<Grid.RowDefinitions> <!-- grid row dimensions-->
+			<RowDefinition Height="*" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+
+		<Grid.ColumnDefinitions> <!-- grid column dimensions-->
+			<ColumnDefinition Width="*" />
+			<!-- Column for ListBox -->
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+
+		<!-- ListBox Control -->
+		<ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Margin="5" > <!--Scroll bar-->
+		<StackPanel> <!--To stack each item-->
+		<ListBox ItemsSource="{Binding ListBoxItems}" SelectedItem="{Binding SelectedItem}" x:Name="listBox" > <!--Listbox bound to listbox items, which contains the tasks-->
+		</ListBox>
+		</StackPanel>
+		</ScrollViewer>
+		<!-- Category listbox-->
+		<ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Margin="5" > <!--Scroll bar-->
+		<StackPanel> <!--To stack each item-->
+		<ListBox ItemsSource="{Binding ListBoxCatItems}" SelectedItem="{Binding SelectedCatItem}" x:Name="listBoxCat" > <!--Listbox bound to listbox cat items, which contains the categories-->
+		</ListBox>
+		</StackPanel>
+		</ScrollViewer>
+		<!-- EDITOR-->
+		<ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="0" Grid.Column="1" Margin="5" Grid.RowSpan ="2"> <!--Scroll bar-->
+		<StackPanel >
+			<Label>MovieID</Label> <!--TaskId box, bound to selected item id in task listbox-->
+			<TextBox Text="{Binding SelectedItem.MovieID, Mode=TwoWay}" x:Name="txtName1" Foreground="gray" IsEnabled="false" />
+			<Label>Title</Label> <!--Title box, bound to selected title in task listbox-->
+			<TextBox Text="{Binding SelectedItem.Title, Mode=TwoWay}" x:Name="txtName2" />
+			<Label>Director</Label> <!--Description box, bound to selected description in task listbox-->
+			<TextBox Text="{Binding SelectedItem.Director, Mode=TwoWay}" x:Name="txtName3" />
+			<Label>Genre</Label> <!--Duedate box, bound to selected item duedate in task listbox-->
+			<TextBox Text="{Binding SelectedItem.Genre, Mode=TwoWay}" x:Name="txtName4" />
+			<Label>Release Year</Label> <!--Completeflag combobox only true or false values, bound to selected completeflag in task listbox-->
+			<TextBox Text="{Binding SelectedItem.RelYear, Mode=TwoWay}" x:Name="txtName5" />
+			<Label>Availability</Label> <!--Labels box only colours in ROYGP acronym are available, bound to selected labels in task listbox-->
+			<ComboBox Text="{Binding SelectedItem.Availability, Mode=TwoWay}" x:Name="txtName6">
+            <ComboBoxItem>Available</ComboBoxItem>
+            <ComboBoxItem>Borrowed</ComboBoxItem>
+
+        	</ComboBox>
+		
+			<Button x:Name="btnSave" Click="ButtonSave_Click" Margin="5"> <!--save task and values to listbox-->
+				Save
+			</Button>
+			<Button x:Name="btnNew" Click="ButtonNew_Click" Margin="5"> <!--New task button, see codebehind for details-->
+				New Task
+			</Button>
+			<Button x:Name="btnDel" Click="ButtonDel_Click" Margin="5"> <!--Delete task button, see codebehind for details-->
+				Delete Task
+			</Button>
+			<Button x:Name="btnSaveDisk" Click="ButtonSaveDisk_Click" Margin="5"> <!--Save tasks to disk button, takes listbox and saves all values to csv file, see codebehind-->
+				SAVE TO DISK
+			</Button>
+			<Button x:Name="btnMarkDisk" Click="MarkdownBtnClick" Margin="5"> <!--Export to markdown button, takes listbox and exports as markdown file, see codebehind for details-->
+				EXPORT TO MARKDOWN
+			</Button>
+		<Label>Category ID</Label>  <!--CategoryId box, bound to selected category id in category listbox-->
+			<TextBox Text="{Binding SelectedCatItem.Id, Mode=TwoWay}" x:Name="txtcatName1" Foreground="gray" IsEnabled="false" />
+			<Label>Category Title</Label>  <!--CategoryTitle box, bound to selected category title in category listbox-->
+			<TextBox Text="{Binding SelectedCatItem.Title, Mode=TwoWay}" x:Name="txtcatName2" />
+			<Button x:Name="btncatSave" Click="ButtonCatSave_Click" Margin="5">  <!--Saves selected category and values to listbox-->
+				Save Category
+			</Button>
+			<Button x:Name="btncatNew" Click="ButtonCatNew_Click" Margin="5">  <!--Creates new category in listbox-->
+				New Category
+			</Button>
+			<Button x:Name="btncatDel" Click="ButtonCatDel_Click" Margin="5">  <!--Deletes category from list box-->
+				Delete Category
+		</Button>
+
+		</StackPanel>
+		</ScrollViewer>	
+	
+			
+
+	</Grid>
 
     </Grid>
 </Window>

@@ -1,0 +1,21 @@
+C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\obj\Debug\net9.0-windows\App.g.cs
+C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\obj\Debug\net9.0-windows\Assignment 1_MarkupCompile.cache
+C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\obj\Debug\net9.0-windows\MainWindow.g.cs
+C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\obj\Debug\net9.0-windows\Assignment 1_MarkupCompile.lref
+C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\bin\Debug\net9.0-windows\Assignment 1.exe
+C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\bin\Debug\net9.0-windows\Assignment 1.deps.json
+C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\bin\Debug\net9.0-windows\Assignment 1.runtimeconfig.json
+C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\bin\Debug\net9.0-windows\Assignment 1.dll
+C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\bin\Debug\net9.0-windows\Assignment 1.pdb
+C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\obj\Debug\net9.0-windows\MainWindow.baml
+C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\obj\Debug\net9.0-windows\Assignment 1.g.resources
+C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\obj\Debug\net9.0-windows\Assignment 1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\obj\Debug\net9.0-windows\Assignment 1.AssemblyInfoInputs.cache
+C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\obj\Debug\net9.0-windows\Assignment 1.AssemblyInfo.cs
+C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\obj\Debug\net9.0-windows\Assignment 1.csproj.CoreCompileInputs.cache
+C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\obj\Debug\net9.0-windows\Assignment 1.sourcelink.json
+C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\obj\Debug\net9.0-windows\Assignment 1.dll
+C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\obj\Debug\net9.0-windows\refint\Assignment 1.dll
+C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\obj\Debug\net9.0-windows\Assignment 1.pdb
+C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\obj\Debug\net9.0-windows\Assignment 1.genruntimeconfig.cache
+C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\obj\Debug\net9.0-windows\ref\Assignment 1.dll
