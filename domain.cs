@@ -18,6 +18,9 @@ namespace domain
             RelYear = aRelYear;
             Availability = aAvail;
         }
-        
+        public override string ToString() // displays as a string the above, in the following format.
+        {
+            return $"Movie: {MovieID}, {Title}, {Director}, {Genre}, {RelYear}, {Availability} ";
+        }
     }
 }
