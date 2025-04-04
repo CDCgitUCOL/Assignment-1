@@ -62,10 +62,10 @@
 				Save
 			</Button>
 			<Button x:Name="btnNew" Click="ButtonNew_Click" Margin="5"> <!--New task button, see codebehind for details-->
-				New Task
+				New Movie
 			</Button>
 			<Button x:Name="btnDel" Click="ButtonDel_Click" Margin="5"> <!--Delete task button, see codebehind for details-->
-				Delete Task
+				Delete Movie
 			</Button>
 			<Button x:Name="btnSaveDisk" Click="ButtonSaveDisk_Click" Margin="5"> <!--Save tasks to disk button, takes listbox and saves all values to csv file, see codebehind-->
 				SAVE TO DISK

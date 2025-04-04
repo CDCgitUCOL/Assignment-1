@@ -41,11 +41,20 @@ public partial class MainWindow : Window
             Movie movie = model.SelectedItem; // task declared as taskitem and initialised as selected item in gui
 
 
-            model.MovieCollection.Remove(movie); //remove task from listbox
-            model.MovieCollection.AddFirst(movie); //add selected task to listbox
+            if (model.movieTable.ContainsKey(movie.MovieID))
+            {
+                model.movieTable.Remove(movie);
+                model.movieTable[movie.MovieID] = movie;
+                model.MovieCollection.Remove(movie); //remove task from listbox
+                model.MovieCollection.AddLast(movie); //add to listbox
+                model.movieListBox.Remove(movie);
+                model.movieListBox.Add(movie);
 
 
+            }
         }
+
+
         catch (Exception fe) //prevent crashing
         {
 
@@ -54,20 +63,25 @@ public partial class MainWindow : Window
     }
     private void ButtonDel_Click(object sender, RoutedEventArgs e) //delete task button
     {
-try
+        try
+        {
+            Movie movie = model.SelectedItem; //task declared as taskitem, initialised as selected item from gui
+            if (model.movieTable.ContainsKey(movie.MovieID))
             {
-                Movie movie = model.SelectedItem; //task declared as taskitem, initialised as selected item from gui
-
-
                 model.MovieCollection.Remove(movie); //remove selected item from listbox
+                model.movieTable.Remove(movie.MovieID);
                 model.movieListBox.Remove(movie);
 
-
             }
-            catch (Exception ed) //prevent exception
-            {
 
-            };
+
+
+        }
+        catch (Exception ed) //prevent exception
+        {
+
+        }
+    ;
 
     }
     private void ButtonNew_Click(object sender, RoutedEventArgs e) //new task button
@@ -84,8 +98,11 @@ try
                     }
                 }
                 Movie newMovie = new Movie(newId + 1, "title", "director", "genre", "release year", "availability"); //create taskitem with default values as arguments
-
-                model.MovieCollection.AddFirst(newMovie); //add to listbox
+                if (!model.movieTable.ContainsKey(newMovie.MovieID))
+                {
+                    model.MovieCollection.AddLast(newMovie); //add to listbox
+                    model.movieTable[newMovie.MovieID] = newMovie;
+                }
                 UpdateListBox();
             }
             catch (Exception efg) //prevent exceptions
@@ -103,14 +120,14 @@ try
             {
                 model.movieListBox.Add(movie);
             }
-            
+
 
         }
     }
-     private void UpdateDelListBox()
+    private void UpdateDelListBox()
     {
 
-        
+
     }
     private void ButtonSaveDisk_Click(object sender, RoutedEventArgs e) //save to disk
     {
