@@ -30,7 +30,14 @@ public partial class MainWindow : Window
 
         ScrollViewer sv = new ScrollViewer();
         sv.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
-
+        model.MovieCollection = importExport.importExport.LoadJson(@"C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\movies.json");
+        
+       UpdateListBox();
+        foreach (var item in model.movieListBox)
+            {
+                // Use the item as the key and a sample value (e.g., an index or a static value)
+                model.movieTable[item.MovieID] = item; // You can customize the value as needed
+            }
     }
 
 
@@ -97,7 +104,7 @@ public partial class MainWindow : Window
                         newId = m.MovieID; //new id is equal to that to allow new tasks to have a higher id (will increment by one)
                     }
                 }
-                Movie newMovie = new Movie(newId + 1, "title", "director", "genre", "release year", "availability"); //create taskitem with default values as arguments
+                Movie newMovie = new Movie(newId + 1, "title", "director", "genre", 1970, "availability"); //create taskitem with default values as arguments
                 if (!model.movieTable.ContainsKey(newMovie.MovieID))
                 {
                     model.MovieCollection.AddLast(newMovie); //add to listbox
@@ -131,7 +138,7 @@ public partial class MainWindow : Window
     }
     private void ButtonSaveDisk_Click(object sender, RoutedEventArgs e) //save to disk
     {
-
+        importExport.importExport.saveJSON(model.MovieCollection, "movies.json");
     }
     //categorybuttons
     private void ButtonCatSave_Click(object sender, RoutedEventArgs e) //save category button

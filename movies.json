@@ -1,0 +1,81 @@
+[
+  {
+    "MovieID": 1,
+    "Title": "title",
+    "Director": "director",
+    "Genre": "genre",
+    "RelYear": 19,
+    "Availability": "availability"
+  },
+  {
+    "MovieID": 2,
+    "Title": "title",
+    "Director": "director",
+    "Genre": "genre",
+    "RelYear": 1970,
+    "Availability": "availability"
+  },
+  {
+    "MovieID": 3,
+    "Title": "title",
+    "Director": "director",
+    "Genre": "genre",
+    "RelYear": 1970,
+    "Availability": "availability"
+  },
+  {
+    "MovieID": 4,
+    "Title": "title",
+    "Director": "director",
+    "Genre": "genre",
+    "RelYear": 1970,
+    "Availability": "availability"
+  },
+  {
+    "MovieID": 5,
+    "Title": "title",
+    "Director": "director",
+    "Genre": "genre",
+    "RelYear": 1970,
+    "Availability": "availability"
+  },
+  {
+    "MovieID": 6,
+    "Title": "title",
+    "Director": "director",
+    "Genre": "genre",
+    "RelYear": 1970,
+    "Availability": "availability"
+  },
+  {
+    "MovieID": 7,
+    "Title": "title",
+    "Director": "director",
+    "Genre": "genre",
+    "RelYear": 1970,
+    "Availability": "availability"
+  },
+  {
+    "MovieID": 8,
+    "Title": "title",
+    "Director": "director",
+    "Genre": "genre",
+    "RelYear": 1970,
+    "Availability": "availability"
+  },
+  {
+    "MovieID": 9,
+    "Title": "title",
+    "Director": "director",
+    "Genre": "genre",
+    "RelYear": 1970,
+    "Availability": "availability"
+  },
+  {
+    "MovieID": 10,
+    "Title": "title",
+    "Director": "director",
+    "Genre": "genre",
+    "RelYear": 1970,
+    "Availability": "availability"
+  }]
