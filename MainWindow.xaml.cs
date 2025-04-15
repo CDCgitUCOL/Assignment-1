@@ -27,8 +27,8 @@ public partial class MainWindow : Window
         InitializeComponent();
         model = new MainWindowViewModel(); //model initialised a new MainWindowViewModel method (which contains listboxes)
         this.DataContext = model; //the data of the gui is equal to the model
-
-
+        
+        
         ScrollViewer sv = new ScrollViewer();
         sv.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
         model.MovieCollection = importExport.importExport.LoadJson(@"C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\movies.json");
@@ -51,12 +51,7 @@ public partial class MainWindow : Window
 
             if (model.movieTable.ContainsKey(movie.MovieID))
             {
-                model.movieTable.Remove(movie);
-                model.movieTable[movie.MovieID] = movie;
-                model.MovieCollection.Remove(movie); //remove task from listbox
-                model.MovieCollection.AddLast(movie); //add to listbox
-                model.movieListBox.Remove(movie);
-                model.movieListBox.Add(movie);
+                model.updateAll(movie);
 
 
             }
@@ -105,7 +100,7 @@ public partial class MainWindow : Window
                         newId = m.MovieID; //new id is equal to that to allow new tasks to have a higher id (will increment by one)
                     }
                 }
-                Movie newMovie = new Movie(newId + 1, "title", "director", "genre", 1970, "availability"); //create taskitem with default values as arguments
+                Movie newMovie = new Movie(newId + 1, "title", "director", "genre", 1970, "Available"); //create taskitem with default values as arguments
                 if (!model.movieTable.ContainsKey(newMovie.MovieID))
                 {
                     model.MovieCollection.AddLast(newMovie); //add to listbox
@@ -170,5 +165,41 @@ public partial class MainWindow : Window
       model.MovieCollection = sorting.SortLinkedList.MergeSort(model.MovieCollection);
        UpdateListBox();
 
+    }
+    private void ButtonBorrow_Click(object sender, RoutedEventArgs e) //borrow button
+    {
+        try 
+        {
+            Movie movie = model.SelectedItem;
+            User user = model.user0;
+            model.movieShop.BorrowMovie(movie, user);
+            model.updateAll(movie);
+                   
+
+        }
+        catch(Exception bor)
+        {
+
+        }
+
+        
+    }
+    private void ButtonReturn_Click(object sender, RoutedEventArgs e) //borrow button
+    {
+        try 
+        {
+            Movie movie = model.SelectedItem;
+
+            model.movieShop.ReturnMovie(movie);
+            model.updateAll(movie);
+                   
+
+        }
+        catch(Exception ret)
+        {
+
+        }
+
+        
     }
 }

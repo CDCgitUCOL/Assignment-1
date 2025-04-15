@@ -1,11 +1,19 @@
 [
   {
+    "MovieID": 2,
+    "Title": "Rocky",
+    "Director": "John Avildsen",
+    "Genre": "Sports",
+    "RelYear": 1976,
+    "Availability": "Borrowed"
+  },
+  {
     "MovieID": 1,
     "Title": "Star Wars",
     "Director": "George Lucas",
     "Genre": "Space Opera",
     "RelYear": 1977,
-    "Availability": "availability"
+    "Availability": "Borrowed"
   },
   {
     "MovieID": 10,
@@ -13,13 +21,5 @@
     "Director": "Francis Ford Cappola",
     "Genre": "Military Horror",
     "RelYear": 1979,
-    "Availability": "availability"
-  },
-  {
-    "MovieID": 2,
-    "Title": "Rocky",
-    "Director": "John Avildsen",
-    "Genre": "Sports",
-    "RelYear": 1976,
-    "Availability": "availability"
+    "Availability": "Available"
   }]
