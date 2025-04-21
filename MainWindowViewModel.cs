@@ -6,21 +6,22 @@ namespace model
 {
     public class MainWindowViewModel //main window model class
     {
-        public LinkedList<Movie> MovieCollection { get; set; } //Listbox for tasks
+        public LinkedList<Movie> MovieCollection { get; set; } 
         public Hashtable movieTable = new Hashtable();
 
         public ObservableCollection<Movie> movieListBox { get; set; }
+        public ObservableCollection<string> borrowHistory { get; set; }
         public ObservableCollection<Movie> movieListSearch { get; set; }
         public MovieRentalSystem movieShop { get; set; }
-        public Movie SelectedItem { get; set; } //selected value for task in gui
+        public Movie SelectedItem { get; set; } 
         public User user0 { get; set; }
 
         public void updateAll(Movie mov)
         {
             movieTable.Remove(mov);
             movieTable[mov.MovieID] = mov;
-            MovieCollection.Remove(mov); //remove task from listbox
-            MovieCollection.AddLast(mov); //add to listbox
+            MovieCollection.Remove(mov); 
+            MovieCollection.AddLast(mov); 
             movieListBox.Remove(mov);
             movieListBox.Add(mov);
         }
@@ -33,7 +34,7 @@ namespace model
             List<Movie> searchR = new List<Movie>();
             foreach (Movie mov in array)
             {
-                if (search.Title == mov.Title)
+                if (search.Title.ToLower() == mov.Title.ToLower())
                 {
                     {
                         Movie found = new Movie
@@ -57,7 +58,7 @@ namespace model
         {
             movieListSearch.Clear();
             Movie search = new Movie();
-            search.MovieID = ID;
+            search.MovieID = Convert.ToString(ID);
             Movie[] array = MovieCollection.ToArray();
             List<Movie> searchR = new List<Movie>();
             foreach (Movie mov in array)
@@ -84,12 +85,13 @@ namespace model
 
         }
 
-        public MainWindowViewModel() //constructor method used to assign values to the above listboxes
+        public MainWindowViewModel() 
         {
-            MovieCollection = new LinkedList<Movie>(); //Listbox items is equal to new observable collection (listbox in gui)
+            MovieCollection = new LinkedList<Movie>(); 
             movieListBox = new ObservableCollection<Movie>();
             movieListSearch = new ObservableCollection<Movie>();
             movieShop = new MovieRentalSystem();
+            borrowHistory = new ObservableCollection<string>();
             user0 = new User { Name = "Chris" };
 
         }

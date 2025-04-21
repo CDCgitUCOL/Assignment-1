@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment_1"
         mc:Ignorable="d"
-        Title="MainWindow"
+        Title="Movie Rentals"
         Height="450"
         Width="1200">
     <Grid>
@@ -28,15 +28,15 @@
 
 		<!-- ListBox Control -->
 		<ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Margin="5" > <!--Scroll bar-->
-		<StackPanel> <!--To stack each item-->
-		<ListBox ItemsSource="{Binding movieListBox}" SelectedItem="{Binding SelectedItem}" x:Name="listBox" > <!--Listbox bound to listbox items, which contains the tasks-->
+		 <!--To stack each item-->
+		<ListBox ItemsSource="{Binding movieListBox}" SelectedItem="{Binding SelectedItem}" x:Name="listBox" VerticalAlignment="Stretch" > <!--Listbox bound to listbox items, which contains the tasks-->
 		</ListBox>
-		</StackPanel>
+		
 		</ScrollViewer>
 		<!-- Category listbox-->
 		<ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Margin="5" > <!--Scroll bar-->
-		<StackPanel> <!--To stack each item-->
-		<ListView Name="listView" ItemsSource="{Binding movieListSearch}">
+		
+		<ListView Name="listView" ItemsSource="{Binding movieListSearch}" VerticalAlignment="Stretch">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding MovieID}" Width="50"/>
@@ -44,69 +44,81 @@
                 </GridView>
             </ListView.View>
         </ListView>
-		</StackPanel>
 		</ScrollViewer>
 		
 		<!-- EDITOR-->
-		<ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="0" Grid.Column="1" Margin="5" Grid.RowSpan ="2"> <!--Scroll bar-->
-		<StackPanel >
-			<Label>MovieID</Label> <!--TaskId box, bound to selected item id in task listbox-->
+		<ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="0" Grid.Column="2" Margin="5" Grid.RowSpan ="2"> <!--Scroll bar-->
+		<StackPanel>
+			<TextBlock Text="Movie Collection Editor" Margin="5" FontWeight="Bold"/>
+			<Label>MovieID</Label>
 			<TextBox Text="{Binding SelectedItem.MovieID, Mode=TwoWay}" x:Name="txtName1" Foreground="gray" IsEnabled="false" />
-			<Label>Title</Label> <!--Title box, bound to selected title in task listbox-->
+			<Label>Title</Label> 
 			<TextBox Text="{Binding SelectedItem.Title, Mode=TwoWay}" x:Name="txtName2" />
-			<Label>Director</Label> <!--Description box, bound to selected description in task listbox-->
+			<Label>Director</Label> 
 			<TextBox Text="{Binding SelectedItem.Director, Mode=TwoWay}" x:Name="txtName3" />
-			<Label>Genre</Label> <!--Duedate box, bound to selected item duedate in task listbox-->
+			<Label>Genre</Label> 
 			<TextBox Text="{Binding SelectedItem.Genre, Mode=TwoWay}" x:Name="txtName4" />
-			<Label>Release Year</Label> <!--Completeflag combobox only true or false values, bound to selected completeflag in task listbox-->
+			<Label>Release Year</Label> 
 			<TextBox Text="{Binding SelectedItem.RelYear, Mode=TwoWay}" x:Name="txtName5" />
-			<Label>Availability</Label> <!--Labels box only colours in ROYGP acronym are available, bound to selected labels in task listbox-->
+			<Label>Availability</Label> 
 			<ComboBox Text="{Binding SelectedItem.Availability, Mode=TwoWay}" x:Name="txtName6">
             <ComboBoxItem>Available</ComboBoxItem>
             <ComboBoxItem>Borrowed</ComboBoxItem>
 
         	</ComboBox>
 		
-			<Button x:Name="btnSave" Click="ButtonSave_Click" Margin="5"> <!--save task and values to listbox-->
+			<Button x:Name="btnSave" Click="ButtonSave_Click" Margin="5"> 
 				Save
 			</Button>
-			<Button x:Name="btnNew" Click="ButtonNew_Click" Margin="5"> <!--New task button, see codebehind for details-->
+			<Button x:Name="btnNew" Click="ButtonNew_Click" Margin="5">
 				New Movie
 			</Button>
-			<Button x:Name="btnDel" Click="ButtonDel_Click" Margin="5"> <!--Delete task button, see codebehind for details-->
+			<Button x:Name="btnDel" Click="ButtonDel_Click" Margin="5">
 				Delete Movie
 			</Button>
-			<Button x:Name="btnBubbleSort" Click="BubSortClick" Margin="5"> <!--Export to markdown button, takes listbox and exports as markdown file, see codebehind for details-->
+			<Button x:Name="btnBubbleSort" Click="BubSortClick" Margin="5"> 
 				Sort by Title
 			</Button>
-			<Button x:Name="btnMergeSort" Click="BubMergeSortClick" Margin="5"> <!--Export to markdown button, takes listbox and exports as markdown file, see codebehind for details-->
+			<Button x:Name="btnMergeSort" Click="BubMergeSortClick" Margin="5"> 
 				Sort by Year
 			</Button>
-			<Button x:Name="btnSaveDisk" Click="ButtonSaveDisk_Click" Margin="5"> <!--Save tasks to disk button, takes listbox and saves all values to csv file, see codebehind-->
+			<Button x:Name="btnSaveDisk" Click="ButtonSaveDisk_Click" Margin="5"> 
 				SAVE TO DISK
 			</Button>
 			
-			<Label>Search by Title</Label>
-			<TextBox x:Name="SearchTitle" Margin="5"/>
-			<Button Content="Search" Click="ButtonSearchTitle_Click" Margin="5"/>
-		<Label>Search by ID</Label>
-			<TextBox x:Name="SearchID" Margin="5"/>
-			<Button Content="Search" Click="ButtonSearchID_Click" Margin="5"/>
-		
+			
 		</StackPanel>
 		</ScrollViewer>	
 	
-		<ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="0" Grid.Column="2" Margin="5" Grid.RowSpan ="2"> <!--Scroll bar-->
+		<ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="0" Grid.Column="1" Margin="5" Grid.RowSpan ="1"> <!--Scroll bar-->
 		<StackPanel>
+			<TextBlock Text="User Controls" Margin="5" FontWeight="Bold"/>
+			<Label>Search by Title</Label>
+			<TextBox x:Name="SearchTitle" Margin="5"/>
+			<Button Content="Search" Click="ButtonSearchTitle_Click" Margin="5"/>
+			<Label>Search by ID</Label>
+			<TextBox x:Name="SearchID" Margin="5"/>
+			<Button Content="Search" Click="ButtonSearchID_Click" Margin="5"/>
+			<TextBlock Text="Movie Loans" Margin="5"/>
 			<Button x:Name="btnBorrow" Click="ButtonBorrow_Click" Margin="5"> 
 				Borrow Movie
 			</Button>
-			<Button x:Name="btnReturn" Click="ButtonReturn_Click" Margin="5"> 
+			<Button x:Name="btnReturn" Click="ButtonReturn_Click" Margin="5" > 
 				Return Movie
 			</Button>
-		</StackPanel>
-		</ScrollViewer>	
+			<Button x:Name="seeHistory" Click="seeHistory_Click" Margin="5">
+			Borrow History
+			</Button>
+			<TextBlock x:Name="notify" FontWeight="Bold" TextWrapping="Wrap" Margin="0,0,0,10"/>
 
+		</StackPanel>
+		
+		</ScrollViewer>	
+		<ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" Grid.RowSpan="1" Grid.Column="1" Margin="5" > <!--Scroll bar-->
+		
+		<ListBox ItemsSource="{Binding borrowHistory}" SelectedItem="{Binding SelectedItem}" x:Name="blistBox" VerticalAlignment="Stretch" > 
+		</ListBox>
+		</ScrollViewer>
 	</Grid>
 
     </Grid>
