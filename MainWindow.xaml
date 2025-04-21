@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow"
         Height="450"
-        Width="800">
+        Width="1200">
     <Grid>
        <Grid Margin="10"> <!-- grid used for formatting gui-->
 	
@@ -22,6 +22,8 @@
 			<ColumnDefinition Width="*" />
 			<!-- Column for ListBox -->
 			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="*" />
+
 		</Grid.ColumnDefinitions>
 
 		<!-- ListBox Control -->
@@ -94,7 +96,16 @@
 		</StackPanel>
 		</ScrollViewer>	
 	
-			
+		<ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="0" Grid.Column="2" Margin="5" Grid.RowSpan ="2"> <!--Scroll bar-->
+		<StackPanel>
+			<Button x:Name="btnBorrow" Click="ButtonBorrow_Click" Margin="5"> 
+				Borrow Movie
+			</Button>
+			<Button x:Name="btnReturn" Click="ButtonReturn_Click" Margin="5"> 
+				Return Movie
+			</Button>
+		</StackPanel>
+		</ScrollViewer>	
 
 	</Grid>
 
