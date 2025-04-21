@@ -10,6 +10,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using domain;
 using model;
+using sorting;
 
 namespace Assignment_1;
 
@@ -31,13 +32,13 @@ public partial class MainWindow : Window
         ScrollViewer sv = new ScrollViewer();
         sv.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
         model.MovieCollection = importExport.importExport.LoadJson(@"C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\movies.json");
-        
-       UpdateListBox();
+
+        UpdateListBox();
         foreach (var item in model.movieListBox)
-            {
-                // Use the item as the key and a sample value (e.g., an index or a static value)
-                model.movieTable[item.MovieID] = item; // You can customize the value as needed
-            }
+        {
+            // Use the item as the key and a sample value (e.g., an index or a static value)
+            model.movieTable[item.MovieID] = item; // You can customize the value as needed
+        }
     }
 
 
@@ -131,31 +132,43 @@ public partial class MainWindow : Window
 
         }
     }
-    private void UpdateDelListBox()
-    {
 
-
-    }
     private void ButtonSaveDisk_Click(object sender, RoutedEventArgs e) //save to disk
     {
-        importExport.importExport.saveJSON(model.MovieCollection, "movies.json");
+        importExport.importExport.saveJSON(model.MovieCollection, @"C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\movies.json");
     }
-    //categorybuttons
-    private void ButtonCatSave_Click(object sender, RoutedEventArgs e) //save category button
+    private void ButtonSearchTitle_Click(object sender, RoutedEventArgs e) //search button
     {
+        string searchText = SearchTitle.Text;
+        model.SearchMovie(searchText);
+    }
+    private void ButtonSearchID_Click(object sender, RoutedEventArgs e) //search button
+    {
+        try 
+        {
+            int searchID = Convert.ToInt32(SearchID.Text);
+            model.SearchMovieID(searchID);
+        }
+        catch(Exception Eid)
+        {
+
+        }
+
+        
+    }
+
+    private void BubSortClick(object sender, RoutedEventArgs e) //button to export tasks to markdown
+    {
+        model.movieListBox.Clear();
+       sorting.SortLinkedList.BubbleSort(model.MovieCollection);
+       UpdateListBox();
 
     }
-    private void ButtonCatDel_Click(object sender, RoutedEventArgs e) //delete category button
+    private void BubMergeSortClick(object sender, RoutedEventArgs e) //button to export tasks to markdown
     {
-
-    }
-    private void ButtonCatNew_Click(object sender, RoutedEventArgs e) //new category button
-    {
-
-    }
-    private void MarkdownBtnClick(object sender, RoutedEventArgs e) //button to export tasks to markdown
-    {
-
+        model.movieListBox.Clear();
+      model.MovieCollection = sorting.SortLinkedList.MergeSort(model.MovieCollection);
+       UpdateListBox();
 
     }
 }
