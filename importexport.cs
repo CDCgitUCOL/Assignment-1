@@ -10,16 +10,16 @@ namespace importExport
         public static void saveJSON(LinkedList<Movie> movieCollection, string path)
         {
             StringBuilder jsonBuilder = new StringBuilder();
-            jsonBuilder.AppendLine("["); // Start of JSON array
+            jsonBuilder.AppendLine("[");
 
             int lineCount = movieCollection.Count;
             int currentIndex = 0;
 
             foreach (Movie movie in movieCollection)
             {
-                // Create a JSON object for each movie
+                
                 jsonBuilder.AppendLine("  {");
-                jsonBuilder.AppendLine($"    \"MovieID\": {movie.MovieID},");
+                jsonBuilder.AppendLine($"    \"MovieID\": \"{movie.MovieID}\",");
                 jsonBuilder.AppendLine($"    \"Title\": \"{movie.Title}\",");
                 jsonBuilder.AppendLine($"    \"Director\": \"{movie.Director}\",");
                 jsonBuilder.AppendLine($"    \"Genre\": \"{movie.Genre}\",");
@@ -27,7 +27,6 @@ namespace importExport
                 jsonBuilder.AppendLine($"    \"Availability\": \"{movie.Availability}\"");
                 jsonBuilder.Append("  }");
 
-                // Add a comma if this is not the last movie
                 if (currentIndex < lineCount - 1)
                 {
                     jsonBuilder.AppendLine(",");
@@ -35,7 +34,7 @@ namespace importExport
                 currentIndex++;
             }
 
-            jsonBuilder.AppendLine("]"); // End of JSON array
+            jsonBuilder.AppendLine("]"); 
 
             File.WriteAllText(path, jsonBuilder.ToString());
         }

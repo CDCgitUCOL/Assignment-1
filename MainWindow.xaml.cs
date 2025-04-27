@@ -25,10 +25,9 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        model = new MainWindowViewModel(); //model initialised a new MainWindowViewModel method (which contains listboxes)
+        model = new MainWindowViewModel(); //model initialised a new MainWindowViewModel method 
         this.DataContext = model; //the data of the gui is equal to the model
-        
-        
+
         ScrollViewer sv = new ScrollViewer();
         sv.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
         model.MovieCollection = importExport.importExport.LoadJson(@"C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\movies.json");
@@ -36,17 +35,38 @@ public partial class MainWindow : Window
         UpdateListBox();
         foreach (var item in model.movieListBox)
         {
-            // Use the item as the key and a sample value (e.g., an index or a static value)
-            model.movieTable[item.MovieID] = item; // You can customize the value as needed
+            // Use the item as the key and a sample value
+            model.movieTable[item.MovieID] = item; 
         }
     }
 
+    private void seeHistory_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            bool history = false;
+            model.borrowHistory.Clear();
+            foreach (string name in model.SelectedItem.borrowUser)
+            {
+                model.borrowHistory.Add(name);
+                history = true;
+            }
+
+            if(history == false)
+            {notify.Text = $"Movie has not been previously borrowed";}
+        }
+
+        catch (Exception test)
+        {
+            notify.Text = $"You must select a movie first.";
+        }
+    }
 
     private void ButtonSave_Click(object sender, RoutedEventArgs e)
     {
         try
         {
-            Movie movie = model.SelectedItem; // task declared as taskitem and initialised as selected item in gui
+            Movie movie = model.SelectedItem; 
 
 
             if (model.movieTable.ContainsKey(movie.MovieID))
@@ -68,10 +88,10 @@ public partial class MainWindow : Window
     {
         try
         {
-            Movie movie = model.SelectedItem; //task declared as taskitem, initialised as selected item from gui
+            Movie movie = model.SelectedItem; 
             if (model.movieTable.ContainsKey(movie.MovieID))
             {
-                model.MovieCollection.Remove(movie); //remove selected item from listbox
+                model.MovieCollection.Remove(movie); //remove selected item
                 model.movieTable.Remove(movie.MovieID);
                 model.movieListBox.Remove(movie);
 
@@ -87,23 +107,23 @@ public partial class MainWindow : Window
     ;
 
     }
-    private void ButtonNew_Click(object sender, RoutedEventArgs e) //new task button
+    private void ButtonNew_Click(object sender, RoutedEventArgs e) //new movie button
     {
         {
             try
             {
-                int newId = 0; // int used to determine the highest id in listbox
-                foreach (Movie m in model.movieListBox.ToArray()) //iterate through listbox
+                int newId = 0; 
+                foreach (Movie m in model.movieListBox.ToArray()) 
                 {
-                    if (m.MovieID > newId) //if any category id is higher than newId....
+                    if (Convert.ToInt32(m.MovieID) > newId) 
                     {
-                        newId = m.MovieID; //new id is equal to that to allow new tasks to have a higher id (will increment by one)
+                        newId = Convert.ToInt32(m.MovieID);
                     }
                 }
-                Movie newMovie = new Movie(newId + 1, "title", "director", "genre", 1970, "Available"); //create taskitem with default values as arguments
+                Movie newMovie = new Movie(newId + 1, "title", "director", "genre", 1970, "Available"); 
                 if (!model.movieTable.ContainsKey(newMovie.MovieID))
                 {
-                    model.MovieCollection.AddLast(newMovie); //add to listbox
+                    model.MovieCollection.AddLast(newMovie); 
                     model.movieTable[newMovie.MovieID] = newMovie;
                 }
                 UpdateListBox();
@@ -139,67 +159,77 @@ public partial class MainWindow : Window
     }
     private void ButtonSearchID_Click(object sender, RoutedEventArgs e) //search button
     {
-        try 
+        try
         {
             int searchID = Convert.ToInt32(SearchID.Text);
             model.SearchMovieID(searchID);
         }
-        catch(Exception Eid)
+        catch (Exception Eid)
         {
 
         }
 
-        
+
     }
 
-    private void BubSortClick(object sender, RoutedEventArgs e) //button to export tasks to markdown
+    private void BubSortClick(object sender, RoutedEventArgs e) 
     {
         model.movieListBox.Clear();
-       sorting.SortLinkedList.BubbleSort(model.MovieCollection);
-       UpdateListBox();
+        sorting.SortLinkedList.BubbleSort(model.MovieCollection);
+        UpdateListBox();
 
     }
-    private void BubMergeSortClick(object sender, RoutedEventArgs e) //button to export tasks to markdown
+    private void BubMergeSortClick(object sender, RoutedEventArgs e) 
     {
         model.movieListBox.Clear();
-      model.MovieCollection = sorting.SortLinkedList.MergeSort(model.MovieCollection);
-       UpdateListBox();
+        model.MovieCollection = sorting.SortLinkedList.MergeSort(model.MovieCollection);
+        UpdateListBox();
 
     }
-    private void ButtonBorrow_Click(object sender, RoutedEventArgs e) //borrow button
+    private void ButtonBorrow_Click(object sender, RoutedEventArgs e) 
     {
-        try 
+        try
         {
             Movie movie = model.SelectedItem;
             User user = model.user0;
+            string avail = movie.Availability;
             model.movieShop.BorrowMovie(movie, user);
             model.updateAll(movie);
-                   
+            if (avail != movie.Availability)
+            {
+                notify.Text = $"{user.Name} has borrowed '{movie.Title}'.";
+                movie.borrowUser.Add(user.Name);
+
+            }
+            else { notify.Text = $"'{movie.Title}' is unavailable. Added to waiting queue. Movie will be loaned to you once available."; }
 
         }
-        catch(Exception bor)
+        catch (Exception bor)
         {
 
         }
 
-        
+
     }
-    private void ButtonReturn_Click(object sender, RoutedEventArgs e) //borrow button
+    private void ButtonReturn_Click(object sender, RoutedEventArgs e) 
     {
-        try 
+        try
         {
             Movie movie = model.SelectedItem;
-
+            string avail = movie.Availability;
             model.movieShop.ReturnMovie(movie);
             model.updateAll(movie);
-                   
+            if (avail != movie.Availability)
+            { notify.Text = $"'{movie.Title}' returned succesfully."; }
+            else { notify.Text = $"Cannot return '{movie.Title}', movie is not loaned to you."; }
+
 
         }
-        catch(Exception ret)
+        catch (Exception ret)
         {
 
         }
 
-        
+
     }
 }
