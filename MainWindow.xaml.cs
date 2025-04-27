@@ -30,7 +30,7 @@ public partial class MainWindow : Window
 
         ScrollViewer sv = new ScrollViewer();
         sv.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
-        model.MovieCollection = importExport.importExport.LoadJson(@"C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\movies.json");
+        model.MovieCollection = importExport.importExport.LoadJson(@"movies.json");
 
         UpdateListBox();
         foreach (var item in model.movieListBox)
@@ -150,7 +150,7 @@ public partial class MainWindow : Window
 
     private void ButtonSaveDisk_Click(object sender, RoutedEventArgs e) //save to disk
     {
-        importExport.importExport.saveJSON(model.MovieCollection, @"C:\Users\Chris\OneDrive\Desktop\BICT25\D201 Advanced Programming\Assignment 1\movies.json");
+        importExport.importExport.saveJSON(model.MovieCollection, "movies.json");
     }
     private void ButtonSearchTitle_Click(object sender, RoutedEventArgs e) //search button
     {
