@@ -35,13 +35,13 @@ public class MovieTests : IDisposable
     }
 
     [Fact]
-    public void AddMovie_ShouldAddMovie_WhenValidMovie()
+    public void AddMovie_ShouldAddMovie_WhenValidMovie() //adding a valid movie to  the movie linked list and hash table should work
     {
         var movie = new Movie { MovieID = "1", Title = "Inception", Genre = "Sci-Fi" };
         AddMovie(_movieCollection,_movieTable,movie);
         var result = _movieCollection.Last;
         Assert.NotNull(result);
-        Assert.Equal("Inception", result.Value.Title);
+        Assert.Equal("Inception", result.Value.Title); // the expected output: "Inception" is equal to result.Value.Title
     }
     [Fact]
     public void AddMovie_ShouldNotAdd_WhenDuplicateMovieId()
@@ -108,25 +108,25 @@ public class MovieTests : IDisposable
         Assert.Equal("Casablanca", sortedTitles[2]);
     }
     [Fact]
-    public void MergeSort_SortsMoviesByReleaseYear()
+    public void IntroSort_SortsMoviesByReleaseYear()
     {
         // Arrange
-          var linkedList = new LinkedList<Movie>();
-        var movie1 = new Movie { MovieID = "1", Title = "Avengers", Genre = "Fantasy", RelYear = 2012};
-        var movie2 = new Movie { MovieID = "2", Title = "Back to the Future", Genre = "Fantasy", RelYear = 1985 };
+        var linkedList = new LinkedList<Movie>();
+        var movie1 = new Movie { MovieID = "1", Title = "Back to the Future", Genre = "Fantasy", RelYear = 1985 };
+        var movie2 = new Movie { MovieID = "2", Title = "Avengers", Genre = "Fantasy", RelYear = 2012};
         var movie3 = new Movie { MovieID = "3", Title = "Casablanca", Genre = "Romance", RelYear = 1942 };
         linkedList.AddLast(movie1);
         linkedList.AddLast(movie2);
         linkedList.AddLast(movie3);
 
         // Act
-        var sortedList = SortLinkedList.MergeSort(linkedList);
+        var sortedList = SortLinkedList.IntroSort(linkedList);
 
         // Assert
-        var sortedMovies = new List<Movie>(sortedList);
-        Assert.Equal(2012, sortedMovies[0].RelYear);
-        Assert.Equal(1985, sortedMovies[1].RelYear); 
-        Assert.Equal(1942, sortedMovies[2].RelYear); 
+        var sortedMovies = new List<Movie>(sortedList); //Expected outputs
+        Assert.Equal(2012, sortedMovies[0].RelYear); //2012
+        Assert.Equal(1985, sortedMovies[1].RelYear); //1985
+        Assert.Equal(1942, sortedMovies[2].RelYear); //1942
        
     }
      [Fact]
