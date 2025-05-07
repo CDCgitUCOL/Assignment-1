@@ -1,0 +1,1 @@
+Note to user: When running the MovieApp program, run it from the VS code terminal. Running the 'Assignment 1.exe' file requires changing the path used to load the movie collection in 'MainWindow.xaml.cs.'.
